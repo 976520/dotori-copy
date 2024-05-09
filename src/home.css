@@ -1,0 +1,310 @@
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+#wrapper {
+  display: flex;
+  position: absolute;
+  left: 95px;
+  justify-content: space-around;
+  align-items: center;
+  height: 85vh;
+  width: 69vw;
+}
+
+#wrapper2 {
+  display: flex;
+  position: absolute;
+  left: 1156px;
+  justify-content: space-around;
+  align-items: center;
+  height: 85vh;
+  width: 23vw;
+}
+
+#clock-container {
+  top: 20px;
+  left: 20px;
+  position: absolute;
+  border-radius: 15px;
+  height: 155px;
+  width: 950px;
+  padding-left: 80px;
+  padding-top: 15px;
+  display: flex;
+  background-image: radial-gradient(
+    198% 2092% at 17% 10%,
+    rgb(89, 102, 233) 0%,
+    rgb(159, 91, 247) 42%,
+    rgb(201, 85, 255) 94%,
+    rgb(242, 181, 181) 100%
+  );
+}
+
+#clock-container h1 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+#gong-ji-sa-hang {
+  top: 210px;
+  left: 20px;
+  position: absolute;
+  border-radius: 15px;
+  height: 360px;
+  width: 30vw;
+  background-color: var(--BACKGROUND_CARD);
+}
+
+#gong-ji-sa-hang h2,
+#ja-sup-sin-chung h2,
+#an-ma-eui-ja h2,
+#bab-container h2 {
+  left: 25px;
+  top: 5px;
+  position: absolute;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--NEUTRAL_N10);
+  letter-spacing: -1px;
+}
+
+#ja-sup-sin-chung {
+  top: 210px;
+  right: 10px;
+  position: absolute;
+  height: 170px;
+  width: 550px;
+  border-radius: 15px;
+  background-color: var(--BACKGROUND_CARD);
+}
+
+#an-ma-eui-ja {
+  top: 400px;
+  right: 10px;
+  position: absolute;
+  height: 170px;
+  width: 550px;
+  border-radius: 15px;
+  background-color: var(--BACKGROUND_CARD);
+}
+
+#profile-container {
+  top: 20px;
+  right: 15px;
+  position: absolute;
+  height: 90px;
+  width: 330px;
+  border-radius: 15px;
+  background-color: var(--BACKGROUND_CARD);
+}
+
+#bab-container {
+  top: 130px;
+  right: 15px;
+  position: absolute;
+  height: 300px;
+  width: 330px;
+  border-radius: 15px;
+  background-color: var(--BACKGROUND_CARD);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 140px;
+}
+
+#bab-list-background {
+  background-color: var(--NEUTRAL_N50);
+  width: 290px;
+  height: 320px;
+
+  border-radius: 10px;
+  top: 100px;
+  position: absolute;
+}
+
+#sik-selector-background {
+  background-color: var(--NEUTRAL_N50);
+  width: 290px;
+  height: 32px;
+  display: flex;
+  border-radius: 10px;
+  left: 20px;
+  top: 55px;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#breakfast-zone,
+#lunch-zone,
+#dinner-zone {
+  z-index: 0;
+  width: 90px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--NEUTRAL_N30);
+}
+
+#sik-selector {
+  background-color: var(--NEUTRAL_N30);
+  width: 86px;
+  height: 28px;
+  z-index: 2;
+  border-radius: 7px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.3s ease-out;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--NEUTRAL_N10);
+  cursor: pointer;
+  user-select: none;
+  margin: 2px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.16);
+}
+
+#date-container {
+  background-color: var(--BACKGROUND_CARD);
+  color: var(--NEUTRAL_N30);
+  top: 30px;
+  left: 80px;
+  height: 27px;
+  width: 140px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+#date-text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--NEUTRAL_N10);
+}
+
+#clock-text h1 {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  position: absolute;
+  left: 70px;
+}
+
+#clock-container img {
+  z-index: 2;
+  position: absolute;
+  right: 10px;
+  top: -100px;
+  height: 250px;
+}
+
+.sin-chung-people {
+  font-size: 44px;
+  font-weight: 700;
+
+  position: absolute;
+  color: var(--NEUTRAL_N10);
+}
+
+.sin-chung-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#an-ma-button,
+#ja-sup-button {
+  height: 28px;
+  width: 90px;
+  border-radius: 7px;
+
+  position: absolute;
+  top: 18vh;
+  right: 23px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  align-content: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+#ja-sup-people-container,
+#an-ma-people-container {
+  display: flex;
+  text-align: center;
+  width: 550px;
+  position: absolute;
+  top: 8vh;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.sul-myung {
+  position: absolute;
+  left: 24px;
+  bottom: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--NEUTRAL_N20);
+  letter-spacing: -1px;
+  text-align: left;
+}
+
+.sul-myung span {
+  color: var(--PRIMARY_P10);
+}
+
+.all-see {
+  position: absolute;
+  font-size: 13px;
+  color: var(--NEUTRAL_N20);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  right: 22px;
+  top: 20px;
+  cursor: pointer;
+  text-decoration-line: none;
+}
+
+#home-nav {
+  background-color: var(--PRIMARY_P20);
+}
+
+#ja-sup-gauge-background,
+#an-ma-gauge-background {
+  background-color: var(--NEUTRAL_N50);
+  position: absolute;
+  top: 5.5vh;
+  display: flex;
+  border-radius: 5px;
+  height: 18px;
+  width: 500px;
+}
+
+#an-ma-gauge,
+#ja-sup-gauge {
+  position: absolute;
+  left: 0px;
+  height: 18px;
+  width: 30px;
+  border-radius: 5px 0px 0px 5px;
+}

@@ -1,0 +1,178 @@
+body[data-theme="dark"] {
+  --PRIMARY_P10: #5966e9;
+  --PRIMARY_P20: #1d2136;
+  --PRIMARY_P30: #24295d;
+  --NEUTRAL_N10: #cdcdd5;
+  --NEUTRAL_N20: #818198;
+  --NEUTRAL_N30: #626274;
+  --NEUTRAL_N40: #292930;
+  --NEUTRAL_N50: #1e1e26;
+  --BACKGROUND_BG: #1f1e2b;
+  --BACKGROUND_CARD: #17161f;
+  --SYSTEM_ERROR: #ff7d7d;
+  --SYSTEM_POSITIVE: #5eff8b;
+  --SUB_GREEN: #79ce6f;
+  --SUB_YELLOW: #e9d844;
+  --SUB_RED: #ee786d;
+}
+
+body[data-theme="light"] {
+  --PRIMARY_P10: #6f7aec;
+  --PRIMARY_P20: #eef0fd;
+  --PRIMARY_P30: #c5caf7;
+  --NEUTRAL_N10: #292e3d;
+  --NEUTRAL_N20: #656b80;
+  --NEUTRAL_N30: #bbbbcc;
+  --NEUTRAL_N40: #e2e2ee;
+  --NEUTRAL_N50: #f2f2f4;
+  --BACKGROUND_BG: #f7f7f9;
+  --BACKGROUND_CARD: #fdfdfd;
+  --SYSTEM_ERROR: #d84d4d;
+  --SYSTEM_POSITIVE: #2e8546;
+  --SUB_GREEN: #9bda93;
+  --SUB_YELLOW: #eee170;
+  --SUB_RED: #f3a199;
+}
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  background-color: var(--BACKGROUND_BG);
+}
+
+p,
+body {
+  color: white;
+  font-family: "SUIT";
+}
+#root-theme {
+  position: absolute;
+  top: 4vh;
+  right: 0vw;
+}
+
+header {
+  width: 92vw;
+  left: 80px;
+  top: 10px;
+  padding-left: 30px;
+  color: var(--NEUTRAL_N10);
+  position: relative;
+  display: flex;
+}
+header h1 {
+  letter-spacing: -2px;
+}
+* {
+  font-family: "SUIT";
+}
+
+nav {
+  left: 0;
+  top: 0;
+  background-color: var(--BACKGROUND_CARD);
+  width: 70px;
+  height: 100vh;
+  position: absolute;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 53vh;
+  flex-direction: column;
+  padding-bottom: 6vh;
+  padding-top: 4vh;
+}
+
+#dotori-logo-nav {
+  height: 8vh;
+  width: 65px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dotori-logo-nav img {
+  height: 5vh;
+}
+
+.button-nav,
+#log-out {
+  height: 7.5vh;
+  width: 65px;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-nav svg,
+#log-out svg {
+  height: 3.7vh;
+}
+
+.button-nav img,
+#log-out img {
+  height: 3.7vh;
+}
+
+@keyframes colorChange {
+  from {
+    background-color: none;
+  }
+  to {
+    background-color: rgba(119, 119, 123, 0.107);
+  }
+}
+
+#nav-container a:hover:not(#dotori-logo-nav) {
+  animation-name: colorChange;
+  animation-timing-function: ease;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+#log-out {
+  height: 7vh;
+  width: 65px;
+  border-radius: 15px;
+  bottom: 5vh;
+  position: absolute;
+}
+
+#dong-gu-ra-mi {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  right: 4px;
+  top: 4px;
+  display: flex;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+#switch-container {
+  top: 0px;
+  right: 40px;
+  width: 68px;
+  height: 38px;
+  z-index: 10;
+  border-radius: 60px;
+  position: absolute;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}

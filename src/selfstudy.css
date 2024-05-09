@@ -1,0 +1,14 @@
+.button-selected {
+  color: white;
+  background-color: var(--PRIMARY_P10);
+  border-color: var(--PRIMARY_P10);
+  transition: all 200ms ease-in-out;
+}
+
+.filter-button:hover {
+  background-color: var(--PRIMARY_P10);
+  transition: all 200ms ease-in-out;
+  border-color: var(--PRIMARY_P10);
+  color: white;
+}
+

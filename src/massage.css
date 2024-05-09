@@ -1,0 +1,38 @@
+#massage-nav {
+  background-color: var(--PRIMARY_P20);
+}
+
+#massage-up-sup-ni-da {
+  height: 250px;
+  width: 99vw;
+  z-index: -1;
+  top: 25%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#massage-up-sup-ni-da svg {
+  user-select: none;
+  left: 47vw;
+  position: absolute;
+}
+
+#massage-up-sup-ni-da h1 {
+  position: absolute;
+  top: 200px;
+  font-size: 23px;
+  font-weight: 700;
+  color: var(--NEUTRAL_N10);
+  letter-spacing: -2px;
+}
+
+#massage-up-sup-ni-da h2 {
+  position: absolute;
+  top: 245px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--NEUTRAL_N20);
+  letter-spacing: -2px;
+}
