@@ -2,7 +2,6 @@
 https://jaegyunfe.tistory.com/18
 https://github.com/tlsgmltjd/TIL/blob/main/React/styled-components.md
 */
-
 const themeRoot = document.getElementById("root-theme");
 let dongGuRaMiRight;
 let switchContainerBackground;
@@ -36,26 +35,24 @@ function Theme() {
     if (theme === "light") {
       document.body.dataset.theme = "dark";
       setThemeRight("5px");
-
+      setSvg("/public/image/theme-dark.svg");
+      switchContainerBackground = "var(--BACKGROUND_CARD)";
       try {
         //element 스타일 변경
-        setSvg("/public/image/theme-dark.svg");
         dotori3DDark.style.opacity = "1";
         dotori3DLight.style.opacity = "0";
         sikSelector.style.background = "var(--NEUTRAL_N30)";
-        switchContainerBackground = "var(--BACKGROUND_CARD)";
       } catch (error) {} //element를 불러올 수 없는 경우
     } else if (theme === "dark") {
       document.body.dataset.theme = "light";
       setThemeRight("35px");
-
+      setSvg("/public/image/theme-light.svg");
+      switchContainerBackground = "var(--NEUTRAL_N40)";
       try {
         //element 스타일 변경
-        setSvg("/public/image/theme-light.svg");
         dotori3DDark.style.opacity = "0";
         dotori3DLight.style.opacity = "1";
         sikSelector.style.background = "var(--BACKGROUND_CARD)";
-        switchContainerBackground = "var(--NEUTRAL_N40)";
       } catch (error) {} //element를 불러올 수 없는 경우
     }
     localStorage.setItem("themeRight", themeRight);
@@ -68,6 +65,7 @@ function Theme() {
   const DongGuRaMi = styled.div``;
 
   const SwitchContainer = styled.div`
+    transition: all 0.2s ease-in-out;
     z-index: 3;
   `;
   const SwitchImg = styled.img``;

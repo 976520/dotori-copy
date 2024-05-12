@@ -2,7 +2,6 @@
 https://github.com/tlsgmltjd/TIL/blob/main/React/component.md
 https://github.com/gaoooon/TIL/blob/main/react/props.md
 */
-
 //재사용할 style
 const buttonStyle = styled.div`
   border: 1px solid var(--NEUTRAL_N20);
@@ -42,6 +41,7 @@ const containerStyle = styled.div`
     color: var(--NEUTRAL_N10);
   }
 `;
+
 
 //Search 요소 style
 const SearchContainer = styled.div`
@@ -267,7 +267,8 @@ function Filter() {
       if (selectFirstGrade === 1) {
         setSelectFirstGrade(0);
       } else {
-        resetClass();
+        setSelectSecondGrade(0);
+        setSelectThirdGrade(0);
         setSelectFirstGrade(1);
       }
     } else if (gradeIndex === 2) {
