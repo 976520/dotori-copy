@@ -42,7 +42,6 @@ const containerStyle = styled.div`
   }
 `;
 
-
 //Search 요소 style
 const SearchContainer = styled.div`
   height: 9.5vh;
