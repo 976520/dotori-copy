@@ -24,7 +24,7 @@ const fetchMeal = async (apiUrl) => {
 };
 
 const displayMeal = (mealData, mealType) => {
-  if (!mealData) return <p>{mealType}이 없습니다.</p>;
+  if (!mealData) return <p>{localStorage.getItem("meal")}이 없습니다.</p>;
   return (
     <div className="meal">
       <h2>{mealType}</h2>
@@ -56,17 +56,15 @@ const App = () => {
       });
   }, []);
 
-  if (error) {
+  if (localStorage.getItem("meal") == "조식") {
+    return <div id="meal-info">{displayMeal(todayMeal[0])}</div>;
+  } else if (localStorage.getItem("meal") == "중식") {
+    return <div id="meal-info">{displayMeal(todayMeal[1])}</div>;
+  } else if (localStorage.getItem("meal") == "석식") {
+    return <div id="meal-info">{displayMeal(todayMeal[2])}</div>;
+  } else if (error) {
     return <div>{error}</div>;
   }
-
-  return (
-    <div id="meal-info">
-      {displayMeal(todayMeal[0])}
-      {displayMeal(todayMeal[1])}
-      {displayMeal(todayMeal[2])}
-    </div>
-  );
 };
 
 ReactDOM.render(<App />, document.getElementById("급식목록-root"));
