@@ -1,25 +1,20 @@
-const bab = async (date) => {
-  try {
-  } catch (error) {}
-}; //급식 API
-
 function App() {
   const [selectedMeal, setSelectedMeal] = React.useState(localStorage.getItem("meal"));
-  const [selectorLeft, setSelectorLeft] = React.useState(localStorage.getItem("left"));
+  const [selectorLeft, setSelectorLeft] = React.useState(localStorage.getItem("selector-left"));
 
   const selectMeal = (meal) => {
     setSelectedMeal(meal);
     if (meal === "조식") {
-      localStorage.setItem("left", "0px");
+      localStorage.setItem("selector-left", "0px");
       localStorage.setItem("meal", "조식");
     } else if (meal === "중식") {
-      localStorage.setItem("left", "100px");
+      localStorage.setItem("selector-left", "100px");
       localStorage.setItem("meal", "중식");
     } else if (meal === "석식") {
-      localStorage.setItem("left", "200px");
+      localStorage.setItem("selector-left", "200px");
       localStorage.setItem("meal", "석식");
     }
-    setSelectorLeft(localStorage.getItem("left"));
+    setSelectorLeft(localStorage.getItem("selector-left"));
   };
 
   return (
@@ -42,5 +37,4 @@ function App() {
   );
 }
 
-const root = document.getElementById("급식-root");
-ReactDOM.render(<App />, root);
+ReactDOM.render(<App />, document.getElementById("급식-root"));
