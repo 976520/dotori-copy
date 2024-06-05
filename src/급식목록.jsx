@@ -1,6 +1,9 @@
 const mealListStyle = styled.div``;
 
 const KEY = "02262453abf84c20b7e104e8be63f648";
+
+const mealInfo = styled.div``;
+
 const formatDate = (date) => {
   return `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}`;
 };
@@ -24,6 +27,10 @@ const fetchMeal = async (apiUrl) => {
 };
 
 const displayMeal = (mealData, mealType) => {
+  React.useEffect(() => {
+    mealType = localStorage.getItem("meal");
+  }, [mealType]);
+
   if (!mealData) return <p>{localStorage.getItem("meal")}이 없습니다.</p>;
   return (
     <div className="meal">
@@ -38,11 +45,7 @@ const App = () => {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    const today = new Date();
-    const todayDate = formatDate(today);
-
-    const apiUrlToday = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${todayDate}&Type=json&KEY=${KEY}`;
-
+    const apiUrlToday = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${formatDate(new Date())}&Type=json&KEY=${KEY}`;
     fetchMeal(apiUrlToday)
       .then((todayData) => {
         if (todayData) {
@@ -52,7 +55,7 @@ const App = () => {
         }
       })
       .catch((error) => {
-        setError(` fetching Error ${error.message}`);
+        setError(`fetching Error ${error.message}`);
       });
   }, []);
 
@@ -63,7 +66,7 @@ const App = () => {
   } else if (localStorage.getItem("meal") == "석식") {
     return <div id="meal-info">{displayMeal(todayMeal[2])}</div>;
   } else if (error) {
-    return <div>{error}</div>;
+    return <div id="meal-info">{error}</div>;
   }
 };
 

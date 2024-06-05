@@ -308,3 +308,12 @@
   width: 30px;
   border-radius: 5px 0px 0px 5px;
 }
+
+#meal-info {
+  position: absolute;
+  top: -15px;
+  font-weight: 700;
+  font-size: 18px;
+  color: rgb(205, 205, 213);
+  padding: 20px;
+}
