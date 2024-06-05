@@ -26,23 +26,28 @@ const fetchMeal = async (apiUrl) => {
   }
 };
 
-const displayMeal = (mealData, mealType) => {
-  React.useEffect(() => {
-    mealType = localStorage.getItem("meal");
-  }, [mealType]);
+const DisplayMeal = ({ mealData, mealType }) => {
+  if (!mealData) {
+    return <p>{mealType}이 없습니다.</p>;
+  }
 
-  if (!mealData) return <p>{localStorage.getItem("meal")}이 없습니다.</p>;
+  const dishName = mealData.DDISH_NM.match(/[가-힣\s]/g)?.join("") || "";
+
   return (
     <div className="meal">
-      <h2>{mealType}</h2>
-      <p>{mealData.DDISH_NM}</p>
+      <p>{dishName}</p>
     </div>
   );
 };
 
 const App = () => {
   const [todayMeal, setTodayMeal] = React.useState([]);
+  const [mealType, setMealType] = React.useState(localStorage.getItem("meal"));
   const [error, setError] = React.useState(null);
+
+  const updateMealType = () => {
+    setMealType(localStorage.getItem("meal"));
+  };
 
   React.useEffect(() => {
     const apiUrlToday = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${formatDate(new Date())}&Type=json&KEY=${KEY}`;
@@ -59,14 +64,42 @@ const App = () => {
       });
   }, []);
 
-  if (localStorage.getItem("meal") == "조식") {
-    return <div id="meal-info">{displayMeal(todayMeal[0])}</div>;
-  } else if (localStorage.getItem("meal") == "중식") {
-    return <div id="meal-info">{displayMeal(todayMeal[1])}</div>;
-  } else if (localStorage.getItem("meal") == "석식") {
-    return <div id="meal-info">{displayMeal(todayMeal[2])}</div>;
+  React.useEffect(() => {
+    // Add event listener for storage changes
+    window.addEventListener("storage", updateMealType);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("storage", updateMealType);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    updateMealType();
+  }, [mealType]);
+
+  if (mealType === "조식") {
+    return (
+      <div id="meal-info">
+        <DisplayMeal mealData={todayMeal[0]} mealType={mealType} />
+      </div>
+    );
+  } else if (mealType === "중식") {
+    return (
+      <div id="meal-info">
+        <DisplayMeal mealData={todayMeal[1]} mealType={mealType} />
+      </div>
+    );
+  } else if (mealType === "석식") {
+    return (
+      <div id="meal-info">
+        <DisplayMeal mealData={todayMeal[2]} mealType={mealType} />
+      </div>
+    );
   } else if (error) {
     return <div id="meal-info">{error}</div>;
+  } else {
+    return null;
   }
 };
 
