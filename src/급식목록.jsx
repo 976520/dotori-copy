@@ -1,3 +1,4 @@
+//급식목록.jsx
 const mealListStyle = styled.div``;
 
 const KEY = "02262453abf84c20b7e104e8be63f648";
@@ -65,24 +66,42 @@ const App = () => {
   }, []);
 
   React.useEffect(() => {
+    // Add event listener for storage changes
     window.addEventListener("storage", updateMealType);
 
+    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("storage", updateMealType);
     };
   }, []);
 
-  if (error) {
-    return <div id="meal-info">{error}</div>;
-  }
+  React.useEffect(() => {
+    updateMealType();
+  }, [mealType]);
 
-  return (
-    <div id="meal-info">
-      {mealType === "조식" && <DisplayMeal mealData={todayMeal[0]} mealType={mealType} />}
-      {mealType === "중식" && <DisplayMeal mealData={todayMeal[1]} mealType={mealType} />}
-      {mealType === "석식" && <DisplayMeal mealData={todayMeal[2]} mealType={mealType} />}
-    </div>
-  );
+  if (mealType === "조식") {
+    return (
+      <div id="meal-info">
+        <DisplayMeal mealData={todayMeal[0]} mealType={mealType} />
+      </div>
+    );
+  } else if (mealType === "중식") {
+    return (
+      <div id="meal-info">
+        <DisplayMeal mealData={todayMeal[1]} mealType={mealType} />
+      </div>
+    );
+  } else if (mealType === "석식") {
+    return (
+      <div id="meal-info">
+        <DisplayMeal mealData={todayMeal[2]} mealType={mealType} />
+      </div>
+    );
+  } else if (error) {
+    return <div id="meal-info">{error}</div>;
+  } else {
+    return null;
+  }
 };
 
 ReactDOM.render(<App />, document.getElementById("급식목록-root"));
