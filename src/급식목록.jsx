@@ -51,9 +51,9 @@ const App = () => {
   const [mealType, setMealType] = React.useState(localStorage.getItem("meal"));
   const [error, setError] = React.useState(null);
 
-  // fetchMeal 호출
-  React.useEffect(() => {
-    const apiUrlToday = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${formatDate(new Date())}&Type=json&KEY=${KEY}`;
+  // 급식 데이터를 가져오는 함수
+  const fetchAndSetMeal = (date) => {
+    const apiUrlToday = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${formatDate(date)}&Type=json&KEY=${KEY}`;
     fetchMeal(apiUrlToday)
       .then((todayData) => {
         // 급식 데이터를 가꼬왔다 -> 상태 업데이트
@@ -66,21 +66,28 @@ const App = () => {
       .catch((error) => {
         setError(`api 요청 중 오류 ${error.message}`);
       });
+  };
+
+  // 컴포넌트가 처음 렌더링될 때
+  React.useEffect(() => {
+    fetchAndSetMeal(new Date());
+  }, []);
+
+  // mealType 상태가 변경될 때마다
+  React.useEffect(() => {
+    fetchAndSetMeal(new Date());
   }, [mealType]);
 
   // localStorage의 아점저가 변경되었을 때 상태 업데이트 함수 호출
   React.useEffect(() => {
+    const updateMealType = () => {
+      setMealType(localStorage.getItem("meal"));
+    };
     window.addEventListener("storage", updateMealType);
-    console.log(localStorage.getItem("meal"));
     return () => {
       window.removeEventListener("storage", updateMealType);
     };
   }, []);
-
-  // 위에한테 호출당하는 애
-  function updateMealType() {
-    setMealType(localStorage.getItem("meal"));
-  }
 
   // mealType에 해당하는 급식 표시 0 1 2 (개선해야할듯 ㄹㅈㄷ비효율)
   if (mealType === "조식") {
