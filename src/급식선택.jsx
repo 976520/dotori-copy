@@ -1,4 +1,4 @@
-function App({ onSelectMeal }) {
+function App() {
   const [selectedMeal, setSelectedMeal] = React.useState(localStorage.getItem("meal"));
   const [selectorLeft, setSelectorLeft] = React.useState(localStorage.getItem("selector-left"));
 
@@ -7,17 +7,14 @@ function App({ onSelectMeal }) {
     if (meal === "조식") {
       localStorage.setItem("selector-left", "0px");
       localStorage.setItem("meal", "조식");
-      setSelectorLeft("0px");
     } else if (meal === "중식") {
       localStorage.setItem("selector-left", "100px");
       localStorage.setItem("meal", "중식");
-      setSelectorLeft("100px");
     } else if (meal === "석식") {
       localStorage.setItem("selector-left", "200px");
       localStorage.setItem("meal", "석식");
-      setSelectorLeft("200px");
     }
-    onSelectMeal(meal);
+    setSelectorLeft(localStorage.getItem("selector-left"));
   };
 
   return (
@@ -39,5 +36,4 @@ function App({ onSelectMeal }) {
     </div>
   );
 }
-
 ReactDOM.render(<App />, document.getElementById("급식-root"));
