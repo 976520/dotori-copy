@@ -41,6 +41,10 @@ const App = () => {
   const [mealType, setMealType] = React.useState(localStorage.getItem("meal"));
   const [error, setError] = React.useState(null);
 
+  const handleMealSelect = (meal) => {
+    setMealType(meal);
+  };
+
   React.useEffect(() => {
     const apiUrlToday = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${formatDate(new Date())}&Type=json&KEY=${KEY}`;
     fetchMeal(apiUrlToday)
@@ -56,41 +60,21 @@ const App = () => {
       });
   }, [mealType]);
 
-  React.useEffect(() => {
-    window.addEventListener("storage", updateMealType);
-    console.log(localStorage.getItem("meal"));
-    return () => {
-      window.removeEventListener("storage", updateMealType);
-    };
-  }, []);
+  return (
+    <div>
+      <MealSelector onSelectMeal={handleMealSelect} />
+      <div className="meal-info">
+        {mealType === "조식" && <DisplayMeal mealData={todayMeal[0]} mealType={mealType} />}
+        {mealType === "중식" && <DisplayMeal mealData={todayMeal[1]} mealType={mealType} />}
+        {mealType === "석식" && <DisplayMeal mealData={todayMeal[2]} mealType={mealType} />}
+        {error && <div className="meal-info">{error}</div>}
+      </div>
+    </div>
+  );
+};
 
-  function updateMealType() {
-    setMealType(localStorage.getItem("meal"));
-  }
-
-  if (mealType === "조식") {
-    return (
-      <div className="meal-info">
-        <DisplayMeal mealData={todayMeal[0]} mealType={mealType} />
-      </div>
-    );
-  } else if (mealType === "중식") {
-    return (
-      <div className="meal-info">
-        <DisplayMeal mealData={todayMeal[1]} mealType={mealType} />
-      </div>
-    );
-  } else if (mealType === "석식") {
-    return (
-      <div className="meal-info">
-        <DisplayMeal mealData={todayMeal[2]} mealType={mealType} />
-      </div>
-    );
-  } else if (error) {
-    return <div className="meal-info">{error}</div>;
-  } else {
-    return null;
-  }
+const MealSelector = ({ onSelectMeal }) => {
+  return <App onSelectMeal={onSelectMeal} />;
 };
 
 ReactDOM.render(<App />, document.getElementById("급식목록-root"));
