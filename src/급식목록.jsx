@@ -38,7 +38,6 @@ const DisplayMeal = ({ mealData, mealType }) => {
 
   // 데이터 정규화
   const dishName = mealData.DDISH_NM.match(/[가-힣\s]/g)?.join("") || "";
-
   return (
     <div className="meal">
       <p>{dishName}</p>
@@ -53,8 +52,8 @@ const App = () => {
 
   // 급식 데이터를 가져오는 함수
   const fetchAndSetMeal = (date) => {
-    const apiUrlToday = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${formatDate(date)}&Type=json&KEY=${KEY}`;
-    fetchMeal(apiUrlToday)
+    const apiUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=F10&SD_SCHUL_CODE=7380292&MLSV_YMD=${formatDate(date)}&Type=json&KEY=${KEY}`;
+    fetchMeal(apiUrl)
       .then((todayData) => {
         // 급식 데이터를 가꼬왔다 -> 상태 업데이트
         if (todayData) {
@@ -68,18 +67,19 @@ const App = () => {
       });
   };
 
-  // 컴포넌트가 처음 렌더링될 때
   React.useEffect(() => {
     fetchAndSetMeal(new Date());
   }, []);
 
   // mealType 상태가 변경될 때마다
   React.useEffect(() => {
+    console.log("mealType state changed");
     fetchAndSetMeal(new Date());
   }, [mealType]);
 
-  // localStorage의 아점저가 변경되었을 때 상태 업데이트 함수 호출
+  // localStorage의 아점저가 변경되었을 때 setMealType
   React.useEffect(() => {
+    console.log("localStorage changed");
     const updateMealType = () => {
       setMealType(localStorage.getItem("meal"));
     };
@@ -89,7 +89,7 @@ const App = () => {
     };
   }, []);
 
-  // mealType에 해당하는 급식 표시 0 1 2 (개선해야할듯 ㄹㅈㄷ비효율)
+  // mealType에 해당하는 급식 표시 0 1 2 ㄹㅈㄷ비효율
   if (mealType === "조식") {
     return (
       <div className="meal-info">
