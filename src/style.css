@@ -164,6 +164,10 @@ nav {
   transition: all 0.2s ease-in-out;
 }
 
+#dong-gu-ra-mi svg {
+  z-index: 10;
+}
+
 #switch-container {
   top: 0px;
   right: 40px;

@@ -130,7 +130,7 @@ function App() {
     const deleteButtonSvg = document.createElement("img");
     deleteButtonSvg.className = "del-button-svg";
     deleteButtonSvg.id = "del-button-svg" + n;
-    deleteButtonSvg.src = "svg/del-button.svg";
+    deleteButtonSvg.src = "/public/image/del-button.svg";
     deleteButton.appendChild(deleteButtonSvg);
 
     //링크버튼
@@ -145,7 +145,7 @@ function App() {
     const linkButtonSvg = document.createElement("img");
     linkButtonSvg.className = "link-button-svg";
     linkButtonSvg.id = "link-button-svg" + n;
-    linkButtonSvg.src = "svg/link-button.svg";
+    linkButtonSvg.src = "/public/image/link-button.svg";
     linkButton.appendChild(linkButtonSvg);
   };
 

@@ -4,6 +4,7 @@ https://github.com/tlsgmltjd/TIL/blob/main/React/styled-components.md
 */
 const themeRoot = document.getElementById("root-theme");
 let dongGuRaMiRight;
+let dongGuRaMiBackground;
 let switchContainerBackground;
 const dotori3DDark = document.getElementById("dotori-3d-dark");
 const dotori3DLight = document.getElementById("dotori-3d-light");
@@ -41,7 +42,8 @@ function Theme() {
         //element 스타일 변경
         dotori3DDark.style.opacity = "1";
         dotori3DLight.style.opacity = "0";
-        sikSelector.style.background = "var(--NEUTRAL_N30)";
+        dongGuRaMiBackground = "var(--NEUTRAL_N30)";
+        localStorage.setItem("selector-color", "#626274");
       } catch (error) {} //element를 불러올 수 없는 경우
     } else if (theme === "dark") {
       document.body.dataset.theme = "light";
@@ -52,26 +54,16 @@ function Theme() {
         //element 스타일 변경
         dotori3DDark.style.opacity = "0";
         dotori3DLight.style.opacity = "1";
-        sikSelector.style.background = "var(--BACKGROUND_CARD)";
+        dongGuRaMiBackground = "var(--BACKGROUND_CARD)";
+        localStorage.setItem("selector-color", "#cdcdd5");
       } catch (error) {} //element를 불러올 수 없는 경우
     }
     localStorage.setItem("themeRight", themeRight);
   }, [theme]);
 
-  const ThemeWrapper = styled.div`
-    transition: all 0.2s ease-in-out;
-  `;
-
-  const DongGuRaMi = styled.div``;
-
-  const SwitchContainer = styled.div`
-    transition: all 0.2s ease-in-out;
-    z-index: 3;
-  `;
-  const SwitchImg = styled.img``;
   return (
-    <ThemeWrapper>
-      <SwitchContainer
+    <div id="theme-wrapper">
+      <div
         id="switch-container"
         style={{ backgroundColor: switchContainerBackground }}
         onClick={() => {
@@ -82,11 +74,11 @@ function Theme() {
           }
         }}
       >
-        <DongGuRaMi id="dong-gu-ra-mi" style={{ right: themeRight }}>
-          <SwitchImg id="switch-svg" src={svg}></SwitchImg>
-        </DongGuRaMi>
-      </SwitchContainer>
-    </ThemeWrapper>
+        <div id="dong-gu-ra-mi" style={{ right: themeRight, backgroundColor: dongGuRaMiBackground }}>
+          <img id="switch-svg" src={svg}></img>
+        </div>
+      </div>
+    </div>
   );
 }
 

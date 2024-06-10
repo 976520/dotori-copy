@@ -142,7 +142,7 @@
 #breakfast-zone,
 #lunch-zone,
 #dinner-zone {
-  z-index: 0;
+  z-index: 1;
   width: 90px;
   height: 32px;
   display: flex;
@@ -156,10 +156,9 @@
 }
 
 #sik-selector {
-  background-color: var(--NEUTRAL_N30);
   width: 86px;
   height: 28px;
-  z-index: 2;
+  z-index: 10;
   border-radius: 7px;
   position: absolute;
   display: flex;

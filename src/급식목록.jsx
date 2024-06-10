@@ -8,7 +8,7 @@ const formatDate = (date) => {
 // 급식을 비동기적으로 가꼬오는 컴포
 const fetchMeal = async (apiUrl) => {
   try {
-    //요청
+    // 요청
     const response = await fetch(apiUrl);
     // !성공 -> 에러
     if (!response.ok) {
@@ -20,7 +20,7 @@ const fetchMeal = async (apiUrl) => {
     if (data.mealServiceDietInfo && data.mealServiceDietInfo[1] && data.mealServiceDietInfo[1].row) {
       return data.mealServiceDietInfo[1].row;
     } else {
-      //가차없는오류처리
+      // 가차없는오류처리
       throw new Error("error");
     }
   } catch (error) {
@@ -31,16 +31,17 @@ const fetchMeal = async (apiUrl) => {
 
 // 급식목록을 화면에 표시하는 컴포
 const DisplayMeal = ({ mealData, mealType }) => {
-  //급식 데이터 없을 때 (꼭 오류인게 아니라 걍 학교안가는날에도 이럼)
+  // 급식 데이터 없을 때 (꼭 오류인게 아니라 걍 학교안가는날에도 이럼)
   if (!mealData) {
     return <p>{mealType}이 없습니다.</p>;
   }
 
   // 데이터 정규화
   const dishName = mealData.DDISH_NM.match(/[가-힣\s]/g)?.join("") || "";
+  const formattedDishName = dishName.split(" ").join("\n");
   return (
     <div className="meal">
-      <p>{dishName}</p>
+      <pre>{formattedDishName}</pre>
     </div>
   );
 };
