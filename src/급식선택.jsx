@@ -1,6 +1,7 @@
 function App() {
   const [selectedMeal, setSelectedMeal] = React.useState(localStorage.getItem("meal"));
   const [selectorLeft, setSelectorLeft] = React.useState(localStorage.getItem("selector-left"));
+  const [selectorBackground, setSelectorBackground] = React.useState(localStorage.getItem("selector-background"));
 
   const selectMeal = (meal) => {
     setSelectedMeal(meal);
@@ -17,10 +18,14 @@ function App() {
     setSelectorLeft(localStorage.getItem("selector-left"));
   };
 
+  React.useEffect(() => {
+    setSelectorBackground(localStorage.getItem("selector-background"));
+  });
+
   return (
     <div>
       <div id="sik-selector-background">
-        <div id="sik-selector" style={{ left: selectorLeft }}>
+        <div id="sik-selector" style={{ left: selectorLeft, backgroundColor: selectorBackground }}>
           {selectedMeal}
         </div>
         <div id="breakfast-zone" onClick={() => selectMeal("조식")}>

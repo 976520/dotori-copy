@@ -168,6 +168,7 @@
   font-size: 16px;
   font-weight: 700;
   color: var(--NEUTRAL_N10);
+  background-color: var(--NEURAL_N40);
   cursor: pointer;
   user-select: none;
   margin: 2px;

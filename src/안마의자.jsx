@@ -3,10 +3,10 @@ let anMaSinChung = "안마의자";
 let background = "var(--PRIMARY_P10)";
 let color = "white";
 let newCounter = 0;
-let localCounter = parseInt(localStorage.getItem("anma-counter")) || 0;
+let anMaLocalCounter = parseInt(localStorage.getItem("anma-counter")) || 0;
 
 function App() {
-  const [counter, modifier] = React.useState(localCounter);
+  const [counter, modifier] = React.useState(anMaLocalCounter);
 
   let anMaGauge = (counter / 5) * 500;
   let anMaRadius = "5px 0px 0px 5px";

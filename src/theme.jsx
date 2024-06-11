@@ -43,6 +43,7 @@ function Theme() {
         dotori3DDark.style.opacity = "1";
         dotori3DLight.style.opacity = "0";
         dongGuRaMiBackground = "var(--NEUTRAL_N30)";
+        localStorage.setItem("selector-background", "var(--NEUTRAL_N30)");
         localStorage.setItem("selector-color", "#626274");
       } catch (error) {} //element를 불러올 수 없는 경우
     } else if (theme === "dark") {
@@ -55,6 +56,7 @@ function Theme() {
         dotori3DDark.style.opacity = "0";
         dotori3DLight.style.opacity = "1";
         dongGuRaMiBackground = "var(--BACKGROUND_CARD)";
+        localStorage.setItem("selector-background", "var(--BACKGROUND_CARD)");
         localStorage.setItem("selector-color", "#cdcdd5");
       } catch (error) {} //element를 불러올 수 없는 경우
     }
