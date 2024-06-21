@@ -32,6 +32,7 @@ function Theme() {
     }
     localStorage.setItem("theme", theme);
   };
+
   React.useEffect(() => {
     if (theme === "light") {
       document.body.dataset.theme = "dark";

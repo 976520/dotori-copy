@@ -226,7 +226,7 @@ function Sex({ onClickSex, selectMale, selectFemale }) {
   );
 }
 
-function Filter() {
+function App() {
   const [searchOutline, setSearchOutline] = React.useState();
   const [searchImgOpacity, setSearchImgOpacity] = React.useState("0.4");
   const [searchValue, setSearchValue] = React.useState();
@@ -265,6 +265,7 @@ function Filter() {
     if (gradeIndex === 1) {
       if (selectFirstGrade === 1) {
         setSelectFirstGrade(0);
+        localStorage.setItem("grade", "1");
       } else {
         setSelectSecondGrade(0);
         setSelectThirdGrade(0);
@@ -273,6 +274,7 @@ function Filter() {
     } else if (gradeIndex === 2) {
       if (selectSecondGrade === 1) {
         setSelectSecondGrade(0);
+        localStorage.setItem("grade", "2");
       } else {
         resetGrade();
         setSelectSecondGrade(1);
@@ -280,6 +282,7 @@ function Filter() {
     } else if (gradeIndex === 3) {
       if (selectThirdGrade === 1) {
         setSelectThirdGrade(0);
+        localStorage.setItem("grade", "3");
       } else {
         resetGrade();
         setSelectThirdGrade(1);
@@ -288,6 +291,7 @@ function Filter() {
   };
 
   const onClickClass = (classIndex) => {
+    localStorage.setItem("class", classIndex);
     if (classIndex === 1) {
       if (selectFirstClass === 1) {
         setSelectFirstClass(0);
@@ -398,6 +402,7 @@ function Filter() {
       </FilterHeader>
 
       <Search
+        id="search"
         setSearchOutline={setSearchOutline}
         setSearchImgOpacity={setSearchImgOpacity}
         setSearchValue={setSearchValue}
@@ -406,22 +411,24 @@ function Filter() {
         searchValue={searchValue}
       />
       <Grade
+        id="grade"
         onClickGrade={onClickGrade}
         selectFirstGrade={selectFirstGrade}
         selectSecondGrade={selectSecondGrade}
         selectThirdGrade={selectThirdGrade}
       />
       <Class
+        id="class"
         onClickClass={onClickClass}
         selectFirstClass={selectFirstClass}
         selectSecondClass={selectSecondClass}
         selectThirdClass={selectThirdClass}
         selectFourthClass={selectFourthClass}
       />
-      <Sex onClickSex={onClickSex} selectMale={selectMale} selectFemale={selectFemale} />
+      <Sex id="sex" onClickSex={onClickSex} selectMale={selectMale} selectFemale={selectFemale} />
     </FilterWrapper>
   );
 }
 
 const filterRoot = document.getElementById("root-filter");
-ReactDOM.render(<Filter />, filterRoot);
+ReactDOM.render(<App />, filterRoot);

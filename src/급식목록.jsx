@@ -67,11 +67,6 @@ const App = () => {
         setError(`api 요청 중 오류 ${error.message}`);
       });
   };
-
-  React.useEffect(() => {
-    fetchAndSetMeal(new Date());
-  }, []);
-
   // mealType 상태가 변경될 때마다
   React.useEffect(() => {
     console.log("mealType state changed");
@@ -111,8 +106,6 @@ const App = () => {
     );
   } else if (error) {
     return <div className="meal-info">{error}</div>;
-  } else {
-    return null;
   }
 };
 
