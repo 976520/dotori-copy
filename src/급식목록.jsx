@@ -109,4 +109,5 @@ const App = () => {
   }
 };
 
-ReactDOM.render(<App />, document.getElementById("급식목록-root"));
+const root = document.getElementById("급식목록-root");
+ReactDOM.render(<App />, root);

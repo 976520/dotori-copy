@@ -1,5 +1,4 @@
 /*
-그저 빛.....
 https://github.com/tlsgmltjd/TIL/blob/main/React/axios.md
 https://github.com/gaoooon/TIL/blob/main/react/library/axios.md
 https://jaegyunfe.tistory.com/2
